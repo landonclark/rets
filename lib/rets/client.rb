@@ -96,7 +96,7 @@ module Rets
         else
           handle_find_failure(retries, opts, e)
         end
-      rescue InvalidRequest, HttpError => e
+      rescue InvalidRequest, HttpError,  HTTPClient::ConnectTimeoutError => e
         handle_find_failure(retries, opts, e)
       rescue AuthorizationFailure => e
         login
